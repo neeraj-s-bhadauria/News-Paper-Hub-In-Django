@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .Frame{
+            width: 100%;
+            height: 500px;
+            max-width: 100%;
+        }
+
+    </style>
+    <script>
+        function changeSrc(siteurl, href){
+            document.getElementById(siteurl).setAttribute('src', href);
+        }
+
+    </script>
+
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <h3>Welcome to The News Paper Hub. Here You can read a lot of news papers.</h3>
+        <!-- Iframe starts here -->
+
+            <iframe id="siteurl" src="" class="Frame mt-4 embed-responsive-item" ></iframe>
+
+        <!-- Iframe ends here -->
+
+        <!-- Sites List Starts -->
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <div class="row">
+                    <div class="col-4">
+
+                            <tr>
+                                {% for site in sites %}
+                                    <td><a href="{{ site.url }}" onclick="changeSrc('siteurl',this.href); return false">{{ site.name }}</a></td>
+                                {% endfor %}
+                            </tr>
+
+                    </div>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- Sites List Ends -->
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to News Paper Hub</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+            function date_time(id)
+            {
+                date = new Date;
+                year = date.getFullYear();
+                month = date.getMonth();
+                months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+                d = date.getDate();
+                day = date.getDay();
+                days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+                h = date.getHours();
+                if(h<10)
+                {
+                        h = "0"+h;
+                }
+                m = date.getMinutes();
+                if(m<10)
+                {
+                        m = "0"+m;
+                }
+                s = date.getSeconds();
+                if(s<10)
+                {
+                        s = "0"+s;
+                }
+                result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+                document.getElementById(id).innerHTML = result;
+                setTimeout('date_time("'+id+'");','1000');
+                return true;
+            }
+        </script>
+
+        <style>
+
+            .footer {
+
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: darkgray;
+            color: black;
+            text-align: center;
+        }
+
+        </style>
+
+</head>
+<body>
+     <!-- Navbar starts -->
+        <div class="container-fluid bg-primary">
+            <nav class="navbar navbar-expand-md bg-primary navbar-dark" id="bg">
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">News Paper Hub</a>
+
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <b><span style="color: white;" id="date_time"></span></b>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+     <!-- Navbar ends -->
+    <div class="container">
+     {% block content %}
+
+     {% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>Copyright @Shivam Singh</p>
+
+    </div>
+    <script type="text/javascript">window.onload = date_time('date_time');</script>
+</body>
+</html>
